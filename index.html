@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ayvisalslkemnekeng10nek – Metabolic Biochemistry MCQ Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --fg: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #0f766e;
+      --primary-hover: #115e59;
+      --primary-light: #f0fdfa;
+      --ok: #15803d;
+      --ok-bg: #f0fdf4;
+      --ok-border: #86efac;
+      --bad: #be123c;
+      --bad-bg: #fff1f2;
+      --bad-border: #fca5a5;
+      box-sizing: border-box;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      padding: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .km { font-family: 'Noto Sans Khmer', system-ui, sans-serif; font-size: 0.88em; color: var(--muted); }
+    .container { max-width: 740px; margin: 0 auto; }
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .brand { font-size: 1.15rem; font-weight: 700; color: var(--fg); letter-spacing: -0.02em; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .kicker { font-size: 0.75rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    h1 { font-size: 1.6rem; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.02em; color: #0f172a; }
+    h2 { font-size: 1.25rem; font-weight: 700; margin: 0 0 18px; line-height: 1.4; color: #0f172a; }
+    .subtext { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+    
+    .opt-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+      text-align: left;
+      margin: 8px 0;
+      padding: 14px 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .opt-btn:hover:not(:disabled) { border-color: #cbd5e1; background: #f8fafc; }
+    .badge {
+      font-weight: 700;
+      font-size: 0.85rem;
+      min-width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      color: #334155;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .opt-btn.sel {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .opt-btn.sel .badge { background: var(--primary); color: #fff; }
+    .opt-btn.ok {
+      border-color: var(--ok-border);
+      background: var(--ok-bg);
+      color: #14532d;
+      font-weight: 600;
+    }
+    .opt-btn.ok .badge { background: var(--ok); color: #fff; }
+    .opt-btn.bad {
+      border-color: var(--bad-border);
+      background: var(--bad-bg);
+      color: #881337;
+    }
+    .opt-btn.bad .badge { background: var(--bad); color: #fff; }
+
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 16px 0; }
+    button.btn {
+      font: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--fg);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    button.btn:hover:not(:disabled) { background: #f1f5f9; border-color: #cbd5e1; }
+    button.btn:active:not(:disabled) { transform: scale(0.98); }
+    button.btn.pri { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+    button.btn.pri:hover { background: var(--primary-hover); }
+    button.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .mode-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.15s;
+      text-align: left;
+    }
+    .mode-card:hover { border-color: #cbd5e1; }
+    .mode-card.active { border-color: var(--primary); background: var(--primary-light); box-shadow: 0 0 0 1.5px var(--primary); }
+    .mode-title { font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .mode-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+
+    .preset-pill {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .preset-pill:hover { background: #e2e8f0; }
+
+    .grid-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+      gap: 6px;
+      margin: 16px 0;
+      max-height: 160px;
+      overflow-y: auto;
+      padding: 4px;
+    }
+    .pal-btn {
+      height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #f8fafc;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+    .pal-btn.cur { outline: 2px solid var(--fg); outline-offset: 1px; }
+    .pal-btn.done { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .stat-card {
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fafafa;
+    }
+    .stat-card.ok { background: var(--ok-bg); border-color: var(--ok-border); color: #14532d; }
+    .stat-card.bad { background: var(--bad-bg); border-color: var(--bad-border); color: #881337; }
+    .stat-val { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
+    .stat-lbl { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+
+    .review-item {
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      margin: 10px 0;
+    }
+    .review-item.good { border-left: 4px solid var(--ok); background: #fcfdfc; }
+    .review-item.wrong { border-left: 4px solid var(--bad); background: #fdfcfc; }
+    .foot { text-align: center; margin-top: 36px; font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header-nav">
+    <span class="brand">ayvisalslkemnekeng10nek</span>
+    <span style="font-size:0.8rem;color:var(--muted)">Metabolic Biochemistry MCQ</span>
+  </div>
+  <div id="app"></div>
+  <div class="foot">
+    <p>ayvisalslkemnekeng10nek · Made by Ay Visal · Norton University Faculty of Pharmacy<br>
+    <span class="km">រៀបចំដោយ Ay Visal · សាកលវិទ្យាល័យន័រតុន · មហាវិទ្យាល័យឱសថសាស្ត្រ</span></p>
+  </div>
+</div>
+
+<script>
+const Q = [{"n": 1, "o": 1, "q": "Which enzyme begins carbohydrate digestion in the mouth?", "p": ["Pepsin", "Maltase", "Salivary amylase", "Lactase"], "a": 2}, {"n": 2, "o": 2, "q": "Which of the following carbohydrates is NOT digested in the human body?", "p": ["Lactose", "Sucrose", "Cellulose", "Maltose"], "a": 2}, {"n": 3, "o": 3, "q": "Pancreatic amylase acts on which substrate?", "p": ["Glycogen and starch", "Lactose", "Glucose", "Cellulose"], "a": 0}, {"n": 4, "o": 4, "q": "Which enzyme converts lactose into glucose and galactose?", "p": ["Sucrase", "Lactase", "Maltase", "Amylase"], "a": 1}, {"n": 5, "o": 5, "q": "Absorption of glucose in the intestine occurs via:", "p": ["Simple diffusion", "Facilitated diffusion", "Secondary active transport", "Endocytosis"], "a": 2}, {"n": 6, "o": 6, "q": "Fructose is absorbed by:", "p": ["SGLT-1", "GLUT-5", "GLUT-2", "Na⁺ pump"], "a": 1}, {"n": 7, "o": 7, "q": "Which disaccharide yields only glucose on digestion?", "p": ["Lactose", "Sucrose", "Maltose", "Cellulose"], "a": 2}, {"n": 8, "o": 8, "q": "The final products of carbohydrate digestion are:", "p": ["Disaccharides", "Polysaccharides", "Monosaccharides", "Oligosaccharides"], "a": 2}, {"n": 9, "o": 9, "q": "Which enzyme is present in the intestinal brush border?", "p": ["Pepsin", "Trypsin", "Sucrase", "Lipase"], "a": 2}, {"n": 10, "o": 10, "q": "Glucose exits intestinal cells into blood via:", "p": ["GLUT-1", "GLUT-2", "GLUT-5", "SGLT-1"], "a": 1}, {"n": 11, "o": 11, "q": "Deficiency of lactase leads to:", "p": ["Diabetes", "Lactose intolerance", "Galactosemia", "Glycogen storage disease"], "a": 1}, {"n": 12, "o": 12, "q": "Which ion is required for glucose absorption in intestine?", "p": ["Calcium", "Potassium", "Sodium", "Chloride"], "a": 2}, {"n": 13, "o": 13, "q": "Where does most carbohydrate digestion occur?", "p": ["Mouth", "Stomach", "Small intestine", "Large intestine"], "a": 2}, {"n": 14, "o": 14, "q": "Which sugar is absorbed fastest?", "p": ["Fructose", "Galactose", "Glucose", "Lactose"], "a": 1}, {"n": 15, "o": 15, "q": "Which enzyme is NOT involved in carbohydrate digestion?", "p": ["Amylase", "Maltase", "Sucrase", "Trypsin"], "a": 3}, {"n": 16, "o": 16, "q": "Which enzyme of glycolysis is inhibited by high levels of ATP and citrate?", "p": ["Hexokinase", "Phosphofructokinase-1", "Pyruvate kinase", "Aldolase"], "a": 1}, {"n": 17, "o": 17, "q": "In which step of glycolysis is NADH produced?", "p": ["Glucose → Glucose-6-phosphate", "Fructose-6-phosphate → Fructose-1,6-bisphosphate", "Glyceraldehyde-3-phosphate → 1,3-bisphosphoglycerate", "Phosphoenolpyruvate → Pyruvate"], "a": 2}, {"n": 18, "o": 18, "q": "Which shuttle transfers cytosolic NADH into mitochondria in liver and heart?", "p": ["Glycerol phosphate shuttle", "Malate-aspartate shuttle", "Carnitine shuttle", "Alanine cycle"], "a": 1}, {"n": 19, "o": 19, "q": "Pyruvate dehydrogenase is inhibited by:", "p": ["ADP", "NAD⁺", "Acetyl-CoA", "CoA"], "a": 2}, {"n": 20, "o": 20, "q": "Which TCA cycle enzyme is located in the inner mitochondrial membrane?", "p": ["Citrate synthase", "Isocitrate dehydrogenase", "Succinate dehydrogenase", "Fumarase"], "a": 2}, {"n": 21, "o": 21, "q": "How many ATP (approximate) are generated from one NADH?", "p": ["1", "2.5", "3", "4"], "a": 1}, {"n": 22, "o": 22, "q": "Which reaction of gluconeogenesis bypasses pyruvate kinase?", "p": ["Glucose-6-phosphatase", "Fructose-1,6-bisphosphatase", "Pyruvate carboxylase + PEP carboxykinase", "Hexokinase"], "a": 2}, {"n": 23, "o": 23, "q": "Biotin is required for which enzyme?", "p": ["Pyruvate dehydrogenase", "Pyruvate carboxylase", "Hexokinase", "Aldolase"], "a": 1}, {"n": 24, "o": 24, "q": "Which pathway is most active in RBCs for protection against oxidative damage?", "p": ["Glycolysis", "TCA cycle", "Pentose phosphate pathway", "Glycogenesis"], "a": 2}, {"n": 25, "o": 25, "q": "Deficiency of glucose-6-phosphate dehydrogenase leads to:", "p": ["Lactic acidosis", "Hemolytic anemia", "Hyperglycemia", "Ketosis"], "a": 1}, {"n": 26, "o": 26, "q": "Which enzyme is activated by fructose-1,6-bisphosphate?", "p": ["Glucose-6-phosphatase", "PFK-1", "Pyruvate kinase", "Glycogen phosphorylase"], "a": 2}, {"n": 27, "o": 27, "q": "Glycogen phosphorylase is activated by:", "p": ["Insulin", "ATP", "Glucagon", "Glucose"], "a": 2}, {"n": 28, "o": 28, "q": "Which organ lacks glucose-6-phosphatase?", "p": ["Liver", "Kidney", "Muscle", "Intestine"], "a": 2}, {"n": 29, "o": 29, "q": "The major fate of galactose in the liver is conversion to:", "p": ["Fructose", "Glucose-1-phosphate", "Lactate", "Pyruvate"], "a": 1}, {"n": 30, "o": 30, "q": "Which intermediate of glycolysis is used for triglyceride synthesis?", "p": ["Pyruvate", "Dihydroxyacetone phosphate", "3-phosphoglycerate", "Phosphoenolpyruvate"], "a": 1}, {"n": 31, "o": 31, "q": "Which enzyme requires pyridoxal phosphate (Vitamin B6)?", "p": ["Glycogen phosphorylase", "Hexokinase", "PFK-1", "Lactate dehydrogenase"], "a": 0}, {"n": 32, "o": 32, "q": "The HMP shunt produces:", "p": ["ATP only", "NADH and ATP", "NADPH and ribose-5-phosphate", "FADH₂"], "a": 2}, {"n": 33, "o": 33, "q": "The primary site of protein digestion is the:", "p": ["Mouth", "Stomach", "Small intestine", "Large intestine"], "a": 2}, {"n": 34, "o": 34, "q": "Which enzyme initiates protein digestion in the stomach?", "p": ["Trypsin", "Pepsin", "Chymotrypsin", "Carboxypeptidase"], "a": 1}, {"n": 35, "o": 35, "q": "Trypsin is secreted in which form?", "p": ["Active enzyme", "Trypsinogen", "Pepsinogen", "Procarboxypeptidase"], "a": 1}, {"n": 36, "o": 36, "q": "Enterokinase activates:", "p": ["Pepsinogen → Pepsin", "Trypsinogen → Trypsin", "Chymotrypsin → Trypsin", "Aminopeptidase → Pepsin"], "a": 1}, {"n": 37, "o": 38, "q": "Transamination requires which coenzyme?", "p": ["NAD⁺", "FAD", "Pyridoxal phosphate", "Biotin"], "a": 2}, {"n": 38, "o": 39, "q": "Which vitamin is a source of pyridoxal phosphate?", "p": ["Vitamin B1", "Vitamin B6", "Vitamin B12", "Vitamin C"], "a": 1}, {"n": 39, "o": 40, "q": "The major amino group carrier in blood is:", "p": ["Glutamate", "Alanine", "Ammonia", "Aspartate"], "a": 1}, {"n": 40, "o": 41, "q": "Oxidative deamination mainly occurs in the:", "p": ["Mitochondria", "Cytosol", "Nucleus", "Lysosome"], "a": 0}, {"n": 41, "o": 42, "q": "Which enzyme catalyzes oxidative deamination of glutamate?", "p": ["Transaminase", "Glutamate dehydrogenase", "Decarboxylase", "Synthetase"], "a": 1}, {"n": 42, "o": 43, "q": "Ammonia is detoxified in the liver by formation of:", "p": ["Uric acid", "Creatinine", "Urea", "Ammonium chloride"], "a": 2}, {"n": 43, "o": 44, "q": "The urea cycle occurs in:", "p": ["Cytosol only", "Mitochondria only", "Both mitochondria and cytosol", "Nucleus"], "a": 2}, {"n": 44, "o": 45, "q": "The first step of urea cycle forms:", "p": ["Citrulline", "Carbamoyl phosphate", "Arginine", "Ornithine"], "a": 1}, {"n": 45, "o": 46, "q": "Which enzyme starts the urea cycle?", "p": ["Carbamoyl phosphate synthetase I", "Arginase", "Ornithine transcarbamylase", "Argininosuccinate synthetase"], "a": 0}, {"n": 46, "o": 47, "q": "Which compound activates carbamoyl phosphate synthetase I?", "p": ["ATP", "N-acetylglutamate", "NADH", "Citrate"], "a": 1}, {"n": 47, "o": 48, "q": "Arginine is cleaved to form:", "p": ["Citrulline + NH₃", "Urea + Ornithine", "Aspartate + NH₃", "Glutamate + CO₂"], "a": 1}, {"n": 48, "o": 49, "q": "Which amino acid is both glucogenic and ketogenic?", "p": ["Leucine", "Lysine", "Isoleucine", "Glycine"], "a": 2}, {"n": 49, "o": 50, "q": "Purely ketogenic amino acids are:", "p": ["Leucine and lysine", "Alanine and glycine", "Aspartate and glutamate", "Serine and cysteine"], "a": 0}, {"n": 50, "o": 51, "q": "Which disorder is caused by deficiency of phenylalanine hydroxylase?", "p": ["Alkaptonuria", "Phenylketonuria", "Maple syrup urine disease", "Homocystinuria"], "a": 1}, {"n": 51, "o": 52, "q": "Elevated ammonia levels in blood lead to:", "p": ["Hypoglycemia", "Encephalopathy", "Anemia", "Acidosis"], "a": 1}, {"n": 52, "o": 53, "q": "The main site of fatty acid synthesis is:", "p": ["Mitochondria", "Nucleus", "Cytosol", "Ribosome"], "a": 2}, {"n": 53, "o": 54, "q": "The rate-limiting enzyme of fatty acid synthesis is:", "p": ["Acetyl-CoA carboxylase", "Fatty acid synthase", "Lipoprotein lipase", "Hormone-sensitive lipase"], "a": 0}, {"n": 54, "o": 55, "q": "β-oxidation of fatty acids occurs in:", "p": ["Cytosol", "Mitochondria", "Endoplasmic reticulum", "Golgi apparatus"], "a": 1}, {"n": 55, "o": 56, "q": "Carnitine is required for:", "p": ["Fatty acid synthesis", "Cholesterol synthesis", "Transport of fatty acids into mitochondria", "Ketone body formation"], "a": 2}, {"n": 56, "o": 57, "q": "The end product of β-oxidation is:", "p": ["Pyruvate", "Acetyl-CoA", "Lactate", "Oxaloacetate"], "a": 1}, {"n": 57, "o": 58, "q": "Which of the following inhibits carnitine shuttle?", "p": ["Malonyl-CoA", "Acetyl-CoA", "NADH", "ATP"], "a": 0}, {"n": 58, "o": 59, "q": "Ketone bodies are produced in:", "p": ["Brain", "Liver", "Muscle", "Kidney"], "a": 1}, {"n": 59, "o": 60, "q": "Which is NOT a ketone body?", "p": ["Acetoacetate", "β-hydroxybutyrate", "Acetone", "Oxaloacetate"], "a": 3}, {"n": 60, "o": 61, "q": "The major lipoprotein carrying triglycerides from liver is:", "p": ["HDL", "LDL", "VLDL", "Chylomicrons"], "a": 2}, {"n": 61, "o": 62, "q": "Lipoprotein lipase acts on:", "p": ["LDL", "HDL", "Triglycerides in lipoproteins", "Cholesterol"], "a": 2}, {"n": 62, "o": 63, "q": "Hormone-sensitive lipase is activated by:", "p": ["Insulin", "Glucagon", "ATP", "NADPH"], "a": 1}, {"n": 63, "o": 64, "q": "Cholesterol synthesis occurs in:", "p": ["Mitochondria", "Cytosol and ER", "Nucleus", "Lysosome"], "a": 1}, {"n": 64, "o": 65, "q": "The rate-limiting enzyme in cholesterol synthesis is:", "p": ["HMG-CoA reductase", "HMG-CoA synthase", "Lipase", "Acetyl-CoA carboxylase"], "a": 0}, {"n": 65, "o": 66, "q": "NADPH is required for:", "p": ["Fatty acid synthesis", "β-oxidation", "Glycolysis", "TCA cycle"], "a": 0}, {"n": 66, "o": 67, "q": "Which lipoprotein is considered “good cholesterol”?", "p": ["LDL", "HDL", "VLDL", "IDL"], "a": 1}, {"n": 67, "o": 68, "q": "Which organ plays the central role in integration of metabolism?", "p": ["Brain", "Kidney", "Liver", "Muscle"], "a": 2}, {"n": 68, "o": 69, "q": "After a carbohydrate-rich meal, excess glucose is mainly converted into:", "p": ["Amino acids", "Glycogen and fatty acids", "Ketone bodies", "Cholesterol only"], "a": 1}, {"n": 69, "o": 70, "q": "During fasting, the primary source of blood glucose is:", "p": ["Glycolysis", "Glycogenesis", "Gluconeogenesis", "Lipogenesis"], "a": 2}, {"n": 70, "o": 71, "q": "Which hormone promotes anabolic processes (storage of nutrients)?", "p": ["Glucagon", "Insulin", "Cortisol", "Epinephrine"], "a": 1}, {"n": 71, "o": 72, "q": "In prolonged fasting, the brain adapts to use:", "p": ["Glucose only", "Fatty acids only", "Ketone bodies", "Amino acids"], "a": 2}, {"n": 72, "o": 73, "q": "The main substrate for gluconeogenesis during starvation is:", "p": ["Glycogen", "Lactate, glycerol, and amino acids", "Fatty acids", "Cholesterol"], "a": 1}, {"n": 73, "o": 74, "q": "Which tissue cannot use fatty acids as a fuel?", "p": ["Liver", "Muscle", "Brain (normally)", "Heart"], "a": 2}, {"n": 74, "o": 75, "q": "Alanine plays a key role in:", "p": ["Lipid transport", "Glucose-alanine cycle", "Ketone body formation", "Cholesterol synthesis"], "a": 1}, {"n": 75, "o": 76, "q": "Excess amino acids are primarily converted into:", "p": ["Fatty acids or glucose", "Glycogen", "Vitamins", "Nucleotides"], "a": 0}, {"n": 76, "o": 77, "q": "The glucose-alanine cycle primarily occurs between:", "p": ["Liver and kidney", "Muscle and liver", "Brain and liver", "Adipose and muscle"], "a": 1}, {"n": 77, "o": 78, "q": "During starvation, which process increases to supply energy?", "p": ["Lipogenesis", "Glycogenesis", "Lipolysis", "Protein synthesis"], "a": 2}, {"n": 78, "o": 79, "q": "Glycerol from triglyceride breakdown is used in:", "p": ["Glycolysis", "Gluconeogenesis", "TCA cycle", "Urea cycle"], "a": 1}, {"n": 79, "o": 80, "q": "Which hormone stimulates lipolysis and gluconeogenesis?", "p": ["Glucagon", "Insulin", "Growth hormone", "Thyroxine"], "a": 0}, {"n": 80, "o": 81, "q": "The Cori cycle involves transport of:", "p": ["Glucose and fatty acids", "Lactate and glucose", "Amino acids and glucose", "Ketone bodies"], "a": 1}, {"n": 81, "o": 82, "q": "During fed state, acetyl-CoA is mainly used for:", "p": ["Ketone body formation", "Gluconeogenesis", "Fatty acid synthesis", "Protein breakdown"], "a": 2}, {"n": 82, "o": 83, "q": "Which metabolic pathway links carbohydrate and lipid metabolism?", "p": ["Glycolysis", "Pentose phosphate pathway", "Acetyl-CoA formation", "Urea cycle"], "a": 2}, {"n": 83, "o": 84, "q": "Protein catabolism increases in:", "p": ["Fed state", "Starvation", "After exercise only", "Sleep"], "a": 1}, {"n": 84, "o": 85, "q": "Urea cycle is closely linked with:", "p": ["Lipid metabolism", "Carbohydrate metabolism", "Protein metabolism", "Vitamin metabolism"], "a": 2}, {"n": 85, "o": 86, "q": "During prolonged starvation, muscle protein breakdown:", "p": ["Increases continuously", "Decreases after initial phase", "Remains constant", "Stops completely"], "a": 1}, {"n": 86, "o": 87, "q": "Which pathway provides NADPH for fatty acid synthesis?", "p": ["Glycolysis", "TCA cycle", "Pentose phosphate pathway", "β-oxidation"], "a": 2}, {"n": 87, "o": 88, "q": "Where does heme synthesis begin in the cell?", "p": ["Cytosol", "Nucleus", "Mitochondria", "Ribosome"], "a": 2}, {"n": 88, "o": 89, "q": "The first step of heme synthesis involves the formation of δ-aminolevulinic acid (ALA). Which enzyme catalyzes this reaction?", "p": ["ALA dehydratase", "Ferrochelatase", "ALA synthase", "Uroporphyrinogen decarboxylase"], "a": 2}, {"n": 89, "o": 90, "q": "Which vitamin is a cofactor for ALA synthase?", "p": ["Vitamin B12", "Vitamin B6", "Vitamin C", "Vitamin K"], "a": 1}, {"n": 90, "o": 91, "q": "Which of the following is the rate-limiting step in heme synthesis?", "p": ["Formation of protoporphyrin IX", "Conversion of ALA to porphobilinogen", "Formation of ALA by ALA synthase", "Insertion of iron into heme"], "a": 2}, {"n": 91, "o": 92, "q": "Where does most of the heme synthesis occur after the first step?", "p": ["Golgi apparatus", "Cytosol", "Lysosome", "Peroxisome"], "a": 1}, {"n": 92, "o": 93, "q": "Which enzyme converts ALA to porphobilinogen?", "p": ["ALA synthase", "ALA dehydratase", "Ferrochelatase", "Coproporphyrinogen oxidase"], "a": 1}, {"n": 93, "o": 94, "q": "Lead poisoning inhibits which enzymes in heme synthesis?", "p": ["ALA dehydratase and ferrochelatase", "ALA synthase and ferrochelatase", "Uroporphyrinogen synthase and decarboxylase", "Coproporphyrinogen oxidase only"], "a": 0}, {"n": 94, "o": 95, "q": "The major carrier of nitrogen in blood is:", "p": ["Urea", "Ammonia", "Glutamine", "Creatinine"], "a": 2}, {"n": 95, "o": 96, "q": "The urea cycle occurs primarily in which organ?", "p": ["Kidney", "Liver", "Muscle", "Brain"], "a": 1}, {"n": 96, "o": 97, "q": "The first step of the urea cycle is catalyzed by:", "p": ["Arginase", "Carbamoyl phosphate synthetase I", "Ornithine transcarbamylase", "Argininosuccinate synthetase"], "a": 1}, {"n": 97, "o": 98, "q": "Which molecule activates carbamoyl phosphate synthetase I?", "p": ["N-acetylglutamate", "ATP", "Citrulline", "Arginine"], "a": 0}, {"n": 98, "o": 99, "q": "The end product of nitrogen metabolism in humans is:", "p": ["Ammonia", "Uric acid", "Urea", "Nitrite"], "a": 2}, {"n": 99, "o": 100, "q": "Transamination reactions require which coenzyme?", "p": ["NAD+", "FAD", "Pyridoxal phosphate (PLP)", "Biotin"], "a": 2}, {"n": 100, "o": 101, "q": "Alanine transports nitrogen from muscle to liver via:", "p": ["Urea cycle", "Cori cycle", "Glucose-alanine cycle", "TCA cycle"], "a": 2}, {"n": 101, "o": 102, "q": "Which enzyme converts glutamate to α-ketoglutarate releasing ammonia?", "p": ["Glutamine synthetase", "Glutamate dehydrogenase", "Alanine aminotransferase", "Arginase"], "a": 1}, {"n": 102, "o": 103, "q": "Hyperammonemia primarily affects which organ?", "p": ["Heart", "Liver", "Brain", "Kidney"], "a": 2}, {"n": 103, "o": 104, "q": "Ornithine transcarbamylase deficiency leads to:", "p": ["Increased urea", "Decreased ammonia", "Hyperammonemia", "Increased creatinine"], "a": 2}, {"n": 104, "o": 105, "q": "The two nitrogen atoms in urea come from:", "p": ["Ammonia and aspartate", "Glutamine and alanine", "Ammonia and glutamate", "Aspartate and alanine"], "a": 0}, {"n": 105, "o": 106, "q": "Which amino acid directly donates nitrogen in urea cycle?", "p": ["Alanine", "Aspartate", "Glutamine", "Glycine"], "a": 1}, {"n": 106, "o": 107, "q": "The urea cycle is linked to TCA cycle via:", "p": ["Citrate", "Fumarate", "Succinate", "Malate"], "a": 1}, {"n": 107, "o": 108, "q": "Which enzyme forms glutamine from glutamate?", "p": ["Glutaminase", "Glutamate dehydrogenase", "Glutamine synthetase", "Transaminase"], "a": 2}, {"n": 108, "o": 109, "q": "In which cellular compartment does the urea cycle begin?", "p": ["Cytosol", "Mitochondria", "Nucleus", "Ribosome"], "a": 1}, {"n": 109, "o": 110, "q": "The first step in heme catabolism is catalyzed by:", "p": ["Biliverdin reductase", "Heme oxygenase", "Catalase", "Peroxidase"], "a": 1}, {"n": 110, "o": 111, "q": "Heme is primarily degraded in which cells?", "p": ["Hepatocytes", "RBCs", "Reticuloendothelial system (macrophages)", "Neurons"], "a": 2}, {"n": 111, "o": 112, "q": "The immediate product of heme degradation is:", "p": ["Bilirubin", "Biliverdin", "Urobilinogen", "Stercobilin"], "a": 1}, {"n": 112, "o": 113, "q": "Biliverdin is converted to bilirubin by:", "p": ["Heme oxygenase", "Biliverdin reductase", "UDP-glucuronyl transferase", "Glucuronidase"], "a": 1}, {"n": 113, "o": 114, "q": "Unconjugated bilirubin is transported in blood bound to:", "p": ["Globulin", "Hemoglobin", "Albumin", "Transferrin"], "a": 2}, {"n": 114, "o": 115, "q": "Conjugation of bilirubin occurs in the:", "p": ["Spleen", "Liver", "Kidney", "Intestine"], "a": 1}, {"n": 115, "o": 116, "q": "The enzyme responsible for bilirubin conjugation is:", "p": ["Glucokinase", "UDP-glucuronyl transferase", "Lipase", "Amylase"], "a": 1}, {"n": 116, "o": 117, "q": "Conjugated bilirubin is also known as:", "p": ["Indirect bilirubin", "Free bilirubin", "Direct bilirubin", "Bound bilirubin"], "a": 2}, {"n": 117, "o": 118, "q": "In the intestine, bilirubin is converted into:", "p": ["Biliverdin", "Urobilinogen", "Hemoglobin", "Porphyrin"], "a": 1}, {"n": 118, "o": 119, "q": "Stercobilin is responsible for:", "p": ["Yellow color of urine", "Brown color of feces", "Red color of blood", "Green color of bile"], "a": 1}, {"n": 119, "o": 120, "q": "Urobilin is responsible for:", "p": ["Yellow color of urine", "Color of bile", "Brown color of feces", "Red color of RBCs"], "a": 0}, {"n": 120, "o": 121, "q": "Neonatal jaundice is mainly due to deficiency of:", "p": ["Heme oxygenase", "Biliverdin reductase", "UDP-glucuronyl transferase", "Albumin"], "a": 2}, {"n": 121, "o": 122, "q": "Excess unconjugated bilirubin in blood leads to:", "p": ["Hemolysis", "Kernicterus", "Anemia", "Polycythemia"], "a": 1}, {"n": 122, "o": 123, "q": "Which condition is characterized by impaired conjugation of bilirubin?", "p": ["Hemolytic jaundice", "Obstructive jaundice", "Hepatocellular jaundice", "Physiological jaundice of newborn"], "a": 3}, {"n": 123, "o": 124, "q": "Which enzyme releases iron from heme during degradation?", "p": ["Heme oxygenase", "Biliverdin reductase", "Transferrin", "Ferritin"], "a": 0}, {"n": 124, "o": 125, "q": "The enzyme collagenase of pancreatic juice hydrolyses collagen present in:", "p": ["Milk", "Eggs", "Cereals", "Meat"], "a": 3}, {"n": 125, "o": 126, "q": "Inactive zymogens (proenzymes) are precursors of all the following gastrointestinal enzymes, except:", "p": ["Trypsin", "Carboxypeptidase", "Pepsin", "Aminopeptidase"], "a": 3}, {"n": 126, "o": 127, "q": "Rennin acts on casein of milk in infants in presence of:", "p": ["Mg++", "Zn++", "Co++", "Ca++"], "a": 3}, {"n": 127, "o": 128, "q": "D-amino acids are absorbed by:", "p": ["Active transport", "In presence of a ‘carrier’ molecule", "In presence of sodium ions", "Passive diffusion"], "a": 3}, {"n": 128, "o": 129, "q": "Iron is absorbed from:", "p": ["Stomach", "Duodenum and jejunum", "Ileum", "Caecum"], "a": 1}, {"n": 129, "o": 130, "q": "The Fe containing pigments are:", "p": ["Haematoidin", "Bilirubin", "Haemosiderin", "Urobilinogen"], "a": 2}, {"n": 130, "o": 131, "q": "In haemochromatosis, the liver is infiltrated with:", "p": ["Copper", "Iron", "Manganese", "Chromium"], "a": 1}, {"n": 131, "o": 132, "q": "Thiamine pyrophosphate (TPP) is derived from:", "p": ["Vitamin B1", "Vitamin B6", "Vitamin B12", "Vitamin C"], "a": 0}, {"n": 132, "o": 133, "q": "Which vitamin is essential for carboxylation reactions?", "p": ["Vitamin K", "Biotin", "Vitamin D", "Vitamin E"], "a": 1}, {"n": 133, "o": 134, "q": "Deficiency of niacin causes:", "p": ["Scurvy", "Rickets", "Pellagra", "Beriberi"], "a": 2}, {"n": 134, "o": 135, "q": "Pyridoxal phosphate (PLP) is active form of:", "p": ["Vitamin B2", "Vitamin B6", "Vitamin B12", "Folic acid"], "a": 1}, {"n": 135, "o": 136, "q": "Which vitamin is required for hydroxylation of proline in collagen synthesis?", "p": ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin K"], "a": 1}, {"n": 136, "o": 137, "q": "Night blindness is due to deficiency of:", "p": ["Vitamin A", "Vitamin D", "Vitamin E", "Vitamin K"], "a": 0}, {"n": 137, "o": 138, "q": "Which vitamin acts as an antioxidant in cell membranes?", "p": ["Vitamin K", "Vitamin A", "Vitamin E", "Vitamin D"], "a": 2}, {"n": 138, "o": 139, "q": "Vitamin B12 deficiency leads to:", "p": ["Microcytic anemia", "Macrocytic anemia", "Hemolytic anemia", "Aplastic anemia"], "a": 1}, {"n": 139, "o": 140, "q": "Which vitamin is synthesized in skin upon UV exposure?", "p": ["Vitamin A", "Vitamin D", "Vitamin K", "Vitamin E"], "a": 1}, {"n": 140, "o": 141, "q": "Riboflavin is a component of:", "p": ["NAD⁺", "FAD", "CoA", "TPP"], "a": 1}, {"n": 141, "o": 142, "q": "Pantothenic acid is part of:", "p": ["Coenzyme A", "NAD⁺", "FMN", "TPP"], "a": 0}, {"n": 142, "o": 143, "q": "Which vitamin deficiency causes beriberi?", "p": ["Vitamin B1", "Vitamin B2", "Vitamin B3", "Vitamin B6"], "a": 0}, {"n": 143, "o": 144, "q": "Vitamin C deficiency leads to:", "p": ["Osteomalacia", "Scurvy", "Pellagra", "Rickets"], "a": 1}, {"n": 144, "o": 145, "q": "Which vitamin is involved in transamination reactions?", "p": ["Vitamin B6", "Vitamin B1", "Vitamin B2", "Vitamin C"], "a": 0}, {"n": 145, "o": 146, "q": "Calcitriol is active form of:", "p": ["Vitamin A", "Vitamin D", "Vitamin K", "Vitamin E"], "a": 1}, {"n": 146, "o": 147, "q": "Which vitamin deficiency causes rickets in children?", "p": ["Vitamin A", "Vitamin D", "Vitamin E", "Vitamin K"], "a": 1}, {"n": 147, "o": 148, "q": "Which vitamin is required for DNA synthesis?", "p": ["Vitamin B12", "Vitamin C", "Vitamin D", "Vitamin K"], "a": 0}, {"n": 148, "o": 149, "q": "Which vitamin deficiency leads to megaloblastic anemia?", "p": ["Vitamin B12 or folate", "Vitamin C", "Vitamin D", "Vitamin K"], "a": 0}, {"n": 149, "o": 150, "q": "Vitamin A is important for:", "p": ["Blood clotting", "Vision", "Bone mineralization", "Antioxidant function"], "a": 1}, {"n": 150, "o": 151, "q": "Which vitamin helps in iron absorption?", "p": ["Vitamin D", "Vitamin C", "Vitamin K", "Vitamin A"], "a": 1}, {"n": 151, "o": 152, "q": "Tocopherol is another name for:", "p": ["Vitamin A", "Vitamin D", "Vitamin E", "Vitamin K"], "a": 2}, {"n": 152, "o": 153, "q": "Which vitamin deficiency causes bleeding disorders?", "p": ["Vitamin K", "Vitamin A", "Vitamin D", "Vitamin C"], "a": 0}, {"n": 153, "o": 154, "q": "Which vitamin is stored in the liver in large amounts?", "p": ["Vitamin C", "Vitamin B1", "Vitamin B12", "Vitamin B2"], "a": 2}, {"n": 154, "o": 155, "q": "Which vitamin functions as a hormone?", "p": ["Vitamin D", "Vitamin C", "Vitamin B6", "Vitamin B1"], "a": 0}, {"n": 155, "o": 156, "q": "Which vitamin is involved in homocysteine metabolism?", "p": ["Vitamin B6, B12, and folate", "Vitamin C", "Vitamin D", "Vitamin E"], "a": 0}, {"n": 156, "o": 157, "q": "The most abundant mineral in the human body is:", "p": ["Iron", "Calcium", "Phosphorus", "Magnesium"], "a": 1}, {"n": 157, "o": 158, "q": "About 99% of body calcium is found in:", "p": ["Blood", "Muscles", "Bones and teeth", "Liver"], "a": 2}, {"n": 158, "o": 159, "q": "The main intracellular cation is:", "p": ["Sodium", "Potassium", "Calcium", "Chloride"], "a": 1}, {"n": 159, "o": 160, "q": "The main extracellular cation is:", "p": ["Potassium", "Magnesium", "Sodium", "Calcium"], "a": 2}, {"n": 160, "o": 161, "q": "Which mineral is essential for oxygen transport?", "p": ["Zinc", "Iron", "Copper", "Selenium"], "a": 1}, {"n": 161, "o": 162, "q": "Hormone that increases blood calcium levels:", "p": ["Calcitonin", "Parathyroid hormone", "Insulin", "Glucagon"], "a": 1}, {"n": 162, "o": 163, "q": "Calcitonin is secreted by:", "p": ["Thyroid C cells", "Parathyroid gland", "Adrenal gland", "Pituitary gland"], "a": 0}, {"n": 163, "o": 164, "q": "Vitamin D promotes:", "p": ["Calcium excretion", "Calcium absorption in intestine", "Sodium retention", "Iron absorption"], "a": 1}, {"n": 164, "o": 165, "q": "Hypocalcemia causes:", "p": ["Muscle relaxation", "Tetany", "Hypertension", "Polyuria"], "a": 1}, {"n": 165, "o": 166, "q": "Hypercalcemia leads to:", "p": ["Tetany", "Muscle spasms", "Kidney stones", "Convulsions"], "a": 2}, {"n": 166, "o": 167, "q": "Phosphorus is mainly stored in:", "p": ["Liver", "Bones", "Blood", "Brain"], "a": 1}, {"n": 167, "o": 168, "q": "PTH decreases:", "p": ["Blood calcium", "Blood phosphate", "Bone resorption", "Calcium absorption"], "a": 1}, {"n": 168, "o": 169, "q": "Iron is transported in blood by:", "p": ["Transferrin", "Ferritin", "Hemoglobin", "Albumin"], "a": 0}, {"n": 169, "o": 170, "q": "Iron is stored in:", "p": ["Hemoglobin", "Myoglobin", "Ferritin", "Transferrin"], "a": 2}, {"n": 170, "o": 171, "q": "Deficiency of iron leads to:", "p": ["Macrocytic anemia", "Microcytic anemia", "Hemolytic anemia", "Aplastic anemia"], "a": 1}, {"n": 171, "o": 172, "q": "Heme iron is absorbed better than non-heme iron because:", "p": ["Requires no transporter", "Better solubility", "Direct absorption", "Less oxidation"], "a": 2}, {"n": 172, "o": 173, "q": "Daily iron loss occurs mainly through:", "p": ["Urine", "Sweat", "Shedding of intestinal cells", "Respiration"], "a": 2}, {"n": 173, "o": 174, "q": "Magnesium is important for:", "p": ["Oxygen transport", "Enzyme activity", "Vision", "Blood clotting"], "a": 1}, {"n": 174, "o": 175, "q": "Magnesium deficiency leads to:", "p": ["Hypercalcemia", "Neuromuscular irritability", "Anemia", "Jaundice"], "a": 1}, {"n": 175, "o": 176, "q": "Zinc is required for:", "p": ["DNA synthesis", "Oxygen transport", "Bone formation only", "Vision only"], "a": 0}, {"n": 176, "o": 167, "q": "Zinc deficiency causes:", "p": ["Night blindness", "Growth retardation", "Rickets", "Scurvy"], "a": 1}, {"n": 177, "o": 168, "q": "Copper is necessary for:", "p": ["Hemoglobin synthesis", "Calcium metabolism", "Sodium balance", "Potassium balance"], "a": 0}, {"n": 178, "o": 169, "q": "Wilson’s disease involves excess accumulation of:", "p": ["Iron", "Copper", "Zinc", "Selenium"], "a": 1}, {"n": 179, "o": 170, "q": "Menkes disease is due to deficiency of:", "p": ["Iron", "Copper", "Zinc", "Iodine"], "a": 1}, {"n": 180, "o": 171, "q": "Iodine is essential for synthesis of:", "p": ["Insulin", "Thyroxine", "Cortisol", "Estrogen"], "a": 1}, {"n": 181, "o": 172, "q": "Iodine deficiency leads to:", "p": ["Goiter", "Anemia", "Rickets", "Scurvy"], "a": 0}, {"n": 182, "o": 173, "q": "Thyroid hormones regulate:", "p": ["Blood pressure", "Metabolism", "Calcium levels", "Oxygen transport"], "a": 1}, {"n": 183, "o": 174, "q": "Sodium regulates:", "p": ["Bone formation", "Fluid balance", "Oxygen transport", "Vision"], "a": 1}, {"n": 184, "o": 175, "q": "Hyponatremia leads to:", "p": ["Dehydration", "Confusion", "Hypertension", "Hyperactivity"], "a": 1}, {"n": 185, "o": 176, "q": "Potassium is important for:", "p": ["Nerve impulse transmission", "Blood clotting", "Bone formation", "Oxygen transport"], "a": 0}, {"n": 186, "o": 177, "q": "Hyperkalemia can cause:", "p": ["Arrhythmias", "Anemia", "Goiter", "Rickets"], "a": 0}, {"n": 187, "o": 178, "q": "Chloride is important for:", "p": ["Hemoglobin synthesis", "Acid-base balance", "Bone structure", "Hormone synthesis"], "a": 1}, {"n": 188, "o": 179, "q": "Chloride shift occurs in:", "p": ["Liver", "RBCs", "Kidneys", "Brain"], "a": 1}, {"n": 189, "o": 180, "q": "Fluoride strengthens:", "p": ["Muscles", "Blood vessels", "Teeth enamel", "Nerves"], "a": 2}, {"n": 190, "o": 181, "q": "Excess fluoride causes:", "p": ["Osteoporosis", "Fluorosis", "Anemia", "Goiter"], "a": 1}, {"n": 191, "o": 182, "q": "Selenium is a component of:", "p": ["Glutathione peroxidase", "Hemoglobin", "Insulin", "Collagen"], "a": 0}, {"n": 192, "o": 183, "q": "Selenium deficiency causes:", "p": ["Cardiomyopathy", "Anemia", "Rickets", "Goiter"], "a": 0}, {"n": 193, "o": 184, "q": "PTH acts on:", "p": ["Liver", "Bones and kidneys", "Brain", "Pancreas"], "a": 1}, {"n": 194, "o": 185, "q": "Calcitriol increases:", "p": ["Calcium absorption", "Sodium excretion", "Iron storage", "Potassium loss"], "a": 0}, {"n": 195, "o": 186, "q": "Calcitonin decreases:", "p": ["Blood calcium", "Blood sodium", "Blood potassium", "Blood glucose"], "a": 0}, {"n": 196, "o": 187, "q": "Rickets is caused by deficiency of:", "p": ["Calcium/Vitamin D", "Iron", "Zinc", "Sodium"], "a": 0}, {"n": 197, "o": 188, "q": "Osteomalacia occurs in:", "p": ["Children", "Adults", "Infants", "Elderly only"], "a": 1}, {"n": 198, "o": 189, "q": "Osteoporosis involves:", "p": ["Increased bone density", "Decreased bone mass", "Excess calcium", "Increased collagen"], "a": 1}, {"n": 199, "o": 190, "q": "Anemia due to iron deficiency shows:", "p": ["Large RBCs", "Small RBCs", "Normal RBCs", "Sickle cells"], "a": 1}, {"n": 200, "o": 191, "q": "Hypokalemia causes:", "p": ["Weakness", "Hypertension", "Goiter", "Fluorosis"], "a": 0}, {"n": 201, "o": 192, "q": "Hypernatremia leads to:", "p": ["Edema", "Dehydration", "Anemia", "Tetany"], "a": 1}, {"n": 202, "o": 193, "q": "Which mineral is part of ATP?", "p": ["Calcium", "Phosphorus", "Iron", "Zinc"], "a": 1}, {"n": 203, "o": 194, "q": "Which mineral is essential for blood clotting?", "p": ["Calcium", "Sodium", "Potassium", "Iron"], "a": 0}, {"n": 204, "o": 195, "q": "Which trace element helps wound healing?", "p": ["Zinc", "Iron", "Copper", "Selenium"], "a": 0}, {"n": 205, "o": 196, "q": "Which mineral deficiency causes cretinism?", "p": ["Iron", "Iodine", "Calcium", "Magnesium"], "a": 1}, {"n": 206, "o": 197, "q": "The end product of fatty acid synthesis is:", "p": ["Stearic acid", "Oleic acid", "Palmitic acid", "Linoleic acid"], "a": 2}, {"n": 207, "o": 198, "q": "The rate-limiting enzyme of fatty acid synthesis is:", "p": ["Fatty acid synthase", "Acetyl-CoA carboxylase", "Lipase", "Carnitine transferase"], "a": 1}, {"n": 208, "o": 199, "q": "Acetyl-CoA is transported from mitochondria to cytosol as:", "p": ["Malate", "Citrate", "Pyruvate", "Oxaloacetate"], "a": 1}, {"n": 209, "o": 200, "q": "The first step of β-oxidation is:", "p": ["Hydration", "Oxidation", "Cleavage", "Reduction"], "a": 1}, {"n": 210, "o": 201, "q": "The primary ketone body is:", "p": ["Acetoacetate", "Cholesterol", "Lactate", "Pyruvate"], "a": 0}, {"n": 211, "o": 202, "q": "The brain uses ketone bodies during:", "p": ["Fed state", "Starvation", "Exercise", "Sleep"], "a": 1}, {"n": 212, "o": 203, "q": "Insulin effect on lipid metabolism:", "p": ["Increases lipolysis", "Decreases fatty acid synthesis", "Increases fatty acid synthesis", "Inhibits glycolysis"], "a": 2}, {"n": 213, "o": 204, "q": "The number of ATP produced from palmitate oxidation:", "p": ["106", "120", "80", "60"], "a": 0}, {"n": 214, "o": 205, "q": "Cholesterol is synthesized from:", "p": ["Glucose", "Acetyl-CoA", "Amino acids", "Lactate"], "a": 1}, {"n": 215, "o": 206, "q": "The storage form of fat:", "p": ["Phospholipid", "Triglyceride", "Cholesterol", "Glycogen"], "a": 1}, {"n": 216, "o": 207, "q": "Glycerol is converted into:", "p": ["Acetyl-CoA", "Glycerol-3-phosphate", "Pyruvate", "Lactate"], "a": 1}, {"n": 217, "o": 208, "q": "Odd-chain fatty acids produce:", "p": ["Acetyl-CoA only", "Lactate", "Propionyl-CoA", "Pyruvate"], "a": 2}, {"n": 218, "o": 209, "q": "Propionyl-CoA is converted into:", "p": ["Succinate", "Pyruvate", "Lactate", "Glucose"], "a": 0}, {"n": 219, "o": 210, "q": "Peroxisomes are involved in:", "p": ["Glycolysis", "FA synthesis", "Very long chain FA oxidation", "DNA synthesis"], "a": 2}, {"n": 220, "o": 211, "q": "Ketogenesis occurs during:", "p": ["High insulin", "Starvation", "High glucose", "Fed state"], "a": 1}, {"n": 221, "o": 212, "q": "Fat digestion requires:", "p": ["Lipase", "Pepsin", "Amylase", "Trypsin"], "a": 0}, {"n": 222, "o": 213, "q": "Bile salts are produced in:", "p": ["Pancreas", "Liver", "Kidney", "Intestine"], "a": 1}, {"n": 223, "o": 214, "q": "Chylomicrons transport:", "p": ["Endogenous lipids", "Proteins", "Exogenous lipids", "Glucose"], "a": 2}, {"n": 224, "o": 215, "q": "The major phospholipid in membranes:", "p": ["Lecithin", "Cholesterol", "Triglyceride", "Glycogen"], "a": 0}, {"n": 225, "o": 216, "q": "Phospholipids contain:", "p": ["Glycerol", "Fatty acids", "Phosphate", "All of the above"], "a": 3}, {"n": 226, "o": 217, "q": "Essential fatty acids include:", "p": ["Palmitic acid", "Oleic acid", "Linoleic acid", "Stearic acid"], "a": 2}, {"n": 227, "o": 218, "q": "The energy yield of fat is:", "p": ["4 kcal/g", "9 kcal/g", "2 kcal/g", "6 kcal/g"], "a": 1}, {"n": 228, "o": 219, "q": "Coenzyme in transamination:", "p": ["NADH", "FAD", "Pyridoxal phosphate", "Biotin"], "a": 2}, {"n": 229, "o": 220, "q": "Transamination transfers:", "p": ["CO₂", "NH₂ group", "Methyl group", "Phosphate"], "a": 1}, {"n": 230, "o": 221, "q": "ALT stands for:", "p": ["Alanine transaminase", "Aspartate transaminase", "Amino transfer ligand", "Alanine transferase"], "a": 0}, {"n": 231, "o": 222, "q": "Key enzyme of transamination", "p": ["Kinase", "Transaminase", "Ligase", "Isomerase"], "a": 1}, {"n": 232, "o": 223, "q": "Oxidative deamination produces:", "p": ["Urea", "Ammonia", "Glucose", "ATP"], "a": 1}, {"n": 233, "o": 224, "q": "Location of oxidative deamination:", "p": ["Cytosol", "Mitochondria", "Nucleus", "Ribosome"], "a": 1}, {"n": 234, "o": 225, "q": "Ammonia is toxic mainly to:", "p": ["Liver", "Kidney", "Brain", "Heart"], "a": 2}, {"n": 235, "o": 226, "q": "Tyrosine forms:", "p": ["Melanin", "Dopamine", "Thyroxine", "All of these"], "a": 3}, {"n": 236, "o": 227, "q": "Tryptophan forms:", "p": ["Serotonin", "Niacin", "Melatonin", "All of these"], "a": 3}, {"n": 237, "o": 228, "q": "Histidine decarboxylation gives:", "p": ["Histamine", "Dopamine", "GABA", "Serotonin"], "a": 0}, {"n": 238, "o": 229, "q": "Entry molecule into TCA cycle:", "p": ["Pyruvate", "Acetyl-CoA", "Glucose", "Lactate"], "a": 1}, {"n": 239, "o": 230, "q": "Gluconeogenesis mainly occurs in:", "p": ["Liver", "Muscle", "Brain", "RBC"], "a": 0}, {"n": 240, "o": 231, "q": "Pyruvate → Oxaloacetate enzyme:", "p": ["Pyruvate kinase", "Pyruvate carboxylase", "PEP carboxykinase", "Lactate dehydrogenase"], "a": 1}, {"n": 241, "o": 232, "q": "Glucose-6-phosphatase is present in:", "p": ["Muscle", "Brain", "Liver", "Adipose"], "a": 2}, {"n": 242, "o": 233, "q": "Glycogen synthesis enzyme:", "p": ["Glycogen phosphorylase", "Glycogen synthase", "Debranching enzyme", "Hexokinase"], "a": 1}, {"n": 243, "o": 234, "q": "Glycogen breakdown enzyme:", "p": ["Glycogen synthase", "Glycogen phosphorylase", "Glucokinase", "Aldolase"], "a": 1}, {"n": 244, "o": 235, "q": "Hormone stimulating glycogenolysis:", "p": ["Glucagon", "Insulin", "Estrogen", "Thyroxine"], "a": 0}, {"n": 245, "o": 236, "q": "Hormone promoting glycogenesis:", "p": ["Glucagon", "Insulin", "Cortisol", "Epinephrine"], "a": 1}, {"n": 246, "o": 237, "q": "Cori cycle involves:", "p": ["Liver & muscle", "Brain & kidney", "Heart & lung", "Liver & pancreas"], "a": 0}, {"n": 247, "o": 238, "q": "Lactate is converted to glucose in:", "p": ["Muscle", "Liver", "Brain", "RBC"], "a": 1}, {"n": 248, "o": 239, "q": "Glycogen stored mainly in:", "p": ["Liver & muscle", "Brain & kidney", "Heart & lungs", "Pancreas"], "a": 0}, {"n": 249, "o": 240, "q": "HMP shunt produces:", "p": ["ATP", "NADPH", "FADH₂", "GTP"], "a": 1}, {"n": 250, "o": 241, "q": "NADPH is used for:", "p": ["Energy production", "Fatty acid synthesis", "Glycolysis", "TCA cycle"], "a": 1}, {"n": 251, "o": 242, "q": "Key enzyme of HMP pathway:", "p": ["Hexokinase", "G6PD", "PFK-1", "Pyruvate kinase"], "a": 1}, {"n": 252, "o": 243, "q": "G6PD deficiency leads to:", "p": ["Diabetes", "Hemolytic anemia", "Cancer", "Obesity"], "a": 1}, {"n": 253, "o": 244, "q": "Insulin activates:", "p": ["Gluconeogenesis", "Glycolysis", "Glycogenolysis", "Lipolysis"], "a": 1}, {"n": 254, "o": 245, "q": "High citrate levels:", "p": ["Stimulate glycolysis", "Inhibit glycolysis", "No effect", "lipogenesis"], "a": 1}, {"n": 255, "o": 246, "q": "Diabetes mellitus affects:", "p": ["Protein metabolism", "Carbohydrate metabolism", "Lipid metabolism", "All of these"], "a": 3}, {"n": 256, "o": 247, "q": "Insulin deficiency leads to:", "p": ["Hyperglycemia", "Hypoglycemia", "Anemia", "Acidosis"], "a": 0}, {"n": 257, "o": 248, "q": "Brain depends mainly on:", "p": ["Fatty acids", "Glucose", "Proteins", "Ketones (normally minimal)"], "a": 1}, {"n": 258, "o": 249, "q": "RBC energy source:", "p": ["TCA cycle", "β-oxidation", "Glycolysis", "ETC"], "a": 2}, {"n": 259, "o": 250, "q": "Pyruvate dehydrogenase requires coenzyme:", "p": ["Vitamin C", "Vitamin B1", "Vitamin D", "Vitamin K"], "a": 1}, {"n": 260, "o": 251, "q": "Lactate accumulation causes:", "p": ["Acidosis", "Alkalosis", "Neutral pH", "Hypernatremia"], "a": 0}, {"n": 261, "o": 252, "q": "Hypoxia leads to:", "p": ["Increased TCA", "Increased glycolysis", "Decreased lactate", "Increased ATP"], "a": 1}, {"n": 262, "o": 253, "q": "Net ATP from aerobic glucose oxidation:", "p": ["30–32 ATP", "10 ATP", "15 ATP", "50 ATP"], "a": 0}, {"n": 263, "o": 254, "q": "Acute intermittent porphyria is due to deficiency of:", "p": ["ALA synthase", "Porphobilinogen deaminase", "Ferrochelatase", "Uroporphyrinogen oxidase"], "a": 1}, {"n": 264, "o": 255, "q": "Photosensitivity is seen in:", "p": ["Porphyria cutanea tarda", "Acute intermittent porphyria", "Lead poisoning", "Hemolytic anemia"], "a": 0}, {"n": 265, "o": 256, "q": "Which enzyme converts uroporphyrinogen III to coproporphyrinogen III?", "p": ["Decarboxylase", "Oxidase", "Synthase", "Hydrolase"], "a": 0}, {"n": 266, "o": 257, "q": "Final steps of heme synthesis occur in:", "p": ["Cytosol", "Mitochondria", "Nucleus", "Ribosome"], "a": 1}, {"n": 267, "o": 258, "q": "ALA synthase is stimulated by:", "p": ["Heme", "Drugs (barbiturates)", "Iron overload", "Vitamin D"], "a": 1}, {"n": 268, "o": 259, "q": "Which condition causes increased ALA synthase activity?", "p": ["High heme", "Low heme", "High iron", "High glucose"], "a": 1}, {"n": 269, "o": 260, "q": "Heme synthesis is highest in:", "p": ["Neurons", "Adipocytes", "RBC precursors", "Cartilage cells"], "a": 2}, {"n": 270, "o": 261, "q": "Heme synthesis requires which vitamin?", "p": ["Vitamin B6", "Vitamin B12", "Vitamin A", "Vitamin K"], "a": 0}, {"n": 271, "o": 262, "q": "Which organ is most affected in porphyria?", "p": ["Skin", "Liver", "Nervous system", "All of the above"], "a": 3}, {"n": 272, "o": 263, "q": "The color of porphyrins is:", "p": ["Blue", "Green", "Red/purple", "Yellow"], "a": 2}, {"n": 273, "o": 254, "q": "Porphyrins accumulate in:", "p": ["Diabetes", "Porphyrias", "Anemia", "Cancer"], "a": 1}, {"n": 274, "o": 255, "q": "Which enzyme deficiency causes photosensitivity?", "p": ["Uroporphyrinogen decarboxylase", "ALA synthase", "Ferrochelatase", "ALA dehydratase"], "a": 0}, {"n": 275, "o": 256, "q": "Protein digestion begins in:", "p": ["Mouth", "Stomach", "Intestine", "Liver"], "a": 1}, {"n": 276, "o": 257, "q": "Chymotrypsin digests:", "p": ["Carbohydrates", "Proteins", "Lipids", "DNA"], "a": 1}, {"n": 277, "o": 258, "q": "Heme is primarily degraded in:", "p": ["Liver and spleen", "Kidney", "Muscle", "Brain"], "a": 0}, {"n": 278, "o": 259, "q": "Unconjugated bilirubin is:", "p": ["Water soluble", "Lipid soluble", "Protein", "Enzyme"], "a": 1}, {"n": 279, "o": 260, "q": "Bilirubin travels in blood bound to:", "p": ["Globulin", "Hemoglobin", "Albumin", "Fibrinogen"], "a": 2}, {"n": 280, "o": 261, "q": "Enzyme for conjugation:", "p": ["Glucuronyl transferase", "Dehydrogenase", "Oxidase", "Ligase"], "a": 0}, {"n": 281, "o": 262, "q": "Bilirubin is conjugated with:", "p": ["Glucose", "Sulfate", "Glucuronic acid", "Amino acid"], "a": 2}, {"n": 282, "o": 263, "q": "Conjugated bilirubin is:", "p": ["Insoluble", "Lipid soluble", "Water soluble", "Toxic"], "a": 2}, {"n": 283, "o": 264, "q": "Urobilinogen is partly converted to:", "p": ["Hemoglobin", "Urobilin", "Myoglobin", "Ferritin"], "a": 1}, {"n": 284, "o": 265, "q": "Stercobilin gives color to:", "p": ["Urine", "Stool", "Blood", "Bile"], "a": 1}, {"n": 285, "o": 266, "q": "Cause of neonatal jaundice:", "p": ["Immature liver", "Increased enzyme activity", "Excess bile", "Kidney failure"], "a": 0}, {"n": 286, "o": 267, "q": "Hemolytic jaundice shows increased:", "p": ["Conjugated bilirubin", "Unconjugated bilirubin", "Protein", "Iron"], "a": 1}, {"n": 287, "o": 268, "q": "UDP-glucuronyl transferase deficiency causes:", "p": ["Hemolysis", "Anemia", "Jaundice", "Infection"], "a": 2}, {"n": 288, "o": 269, "q": "Urobilin gives color to:", "p": ["Stool", "Urine", "Plasma", "RBC"], "a": 1}, {"n": 289, "o": 270, "q": "Micelles help in absorption of:", "p": ["Lipids", "Proteins", "Carbohydrates", "Minerals"], "a": 0}, {"n": 290, "o": 271, "q": "Lipid absorption occurs mainly in", "p": ["Stomach", "Duodenum", "Jejunum", "Colon"], "a": 2}, {"n": 291, "o": 272, "q": "Chylomicrons enter circulation via", "p": ["Blood directly", "Lymphatic system", "Portal vein", "Hepatic vein"], "a": 1}, {"n": 292, "o": 273, "q": "Lipoprotein lipase acts on", "p": ["HDL", "LDL", "Chylomicrons", "Albumin"], "a": 2}, {"n": 293, "o": 274, "q": "Free fatty acids in blood bind to", "p": ["Globulin", "Albumin", "Hemoglobin", "Myoglobin"], "a": 1}, {"n": 294, "o": 275, "q": "Short-chain fatty acids are absorbed directly into", "p": ["Lymph", "Blood", "Liver", "Kidney"], "a": 1}, {"n": 295, "o": 276, "q": "Re-esterification occurs in", "p": ["Enterocytes", "Stomach", "Liver", "Muscle"], "a": 0}, {"n": 296, "o": 277, "q": "Fat malabsorption leads to", "p": ["Diarrhea", "Steatorrhea", "Constipation", "Vomiting"], "a": 1}, {"n": 297, "o": 278, "q": "Carnitine function:", "p": ["Oxidation", "Transport of fatty acids", "Synthesis", "Storage"], "a": 1}, {"n": 298, "o": 279, "q": "High NADH inhibits:", "p": ["β-oxidation", "Glycolysis", "TCA cycle", "All of these"], "a": 3}, {"n": 299, "o": 280, "q": "Ketosis occurs in:", "p": ["Fed state", "Starvation", "High glucose", "Exercise only"], "a": 1}, {"n": 300, "o": 281, "q": "Diabetic ketoacidosis involves:", "p": ["Low ketones", "High ketones", "Low glucose", "High insulin"], "a": 1}, {"n": 301, "o": 282, "q": "Fatty liver due to:", "p": ["Decreased lipoprotein synthesis", "Increased export", "Increased oxidation", "Decreased FA"], "a": 0}, {"n": 302, "o": 283, "q": "Ferrochelatase inserts:", "p": ["Mg²⁺", "Fe²⁺", "Fe³⁺", "Zn²⁺"], "a": 1}, {"n": 303, "o": 284, "q": "Vitamin A is stored mainly in:", "p": ["Liver stellate cells", "Kidney", "Muscle", "Adipose tissue"], "a": 0}, {"n": 304, "o": 285, "q": "Excess vitamin A causes:", "p": ["Rickets", "Hypercalcemia", "Hepatotoxicity", "Hemolysis"], "a": 2}, {"n": 305, "o": 286, "q": "Retinoic acid acts via:", "p": ["GPCR", "Nuclear receptors", "Ion channels", "Tyrosine kinases"], "a": 1}, {"n": 306, "o": 287, "q": "Toxicity symptom of vitamin A:", "p": ["Bleeding", "Neuropathy", "Bone pain", "Scurvy"], "a": 2}, {"n": 307, "o": 288, "q": "PTH effect on vitamin D:", "p": ["Decreases activation", "Increases activation", "No effect", "Inhibits absorption"], "a": 1}, {"n": 308, "o": 289, "q": "It protects membranes from:", "p": ["Oxidation", "Hydrolysis", "Reduction", "Mutation"], "a": 0}, {"n": 309, "o": 290, "q": "Warfarin inhibits:", "p": ["Vitamin K recycling", "Vitamin D", "Vitamin A", "Iron"], "a": 0}, {"n": 310, "o": 291, "q": "Vitamin K epoxide reductase is inhibited by:", "p": ["Warfarin", "Aspirin", "Insulin", "Glucagon"], "a": 0}, {"n": 311, "o": 292, "q": "Folate stored in:", "p": ["Liver", "Kidney", "Brain", "Muscle"], "a": 0}, {"n": 312, "o": 293, "q": "The enzyme collagenase of pancreatic juice hydrolyses collagen present in:", "p": ["Milk", "Eggs", "Cereals", "Meat"], "a": 3}, {"n": 313, "o": 294, "q": "The milk protein in the stomach in an adult is digested by:", "p": ["Pepsin", "Rennin", "HCI", "Trypsin"], "a": 0}, {"n": 314, "o": 295, "q": "Rennin acts on casein of milk in infants in presence of:", "p": ["Mg++", "Zn++", "Co++", "Ca++"], "a": 3}, {"n": 315, "o": 296, "q": "Ornithine has all of the following properties except:", "p": ["It is an intermediate of urea cycle", "It is not found in proteins", "It is glucogenic", "It can be formed from arginine"], "a": 2}, {"n": 316, "o": 297, "q": "For activity of salivary amylase. Which of the following is required as activator:", "p": ["HCO3– ion", "Presence of Na+", "Presence of K+", "Chloride ion"], "a": 3}, {"n": 317, "o": 298, "q": "Which of the following hormone increases the absorption of glucose from GI tract?", "p": ["Insulin", "Thyroid hormones", "Glucagon", "FSH"], "a": 1}, {"n": 318, "o": 299, "q": "All of the following compounds are intermediates of TCA cycle except:", "p": ["Malate", "Pyruvate", "Oxaloacetate", "Fumarate"], "a": 1}, {"n": 319, "o": 300, "q": "The major source of cholesterol in arterial smooth muscle cells is from:", "p": ["LDL", "HDL", "Chylomicrons", "VLDL"], "a": 0}];
+const L = ["A", "B", "C", "D"];
+const PIN = /^(all|both|none) of/i;
+
+let KEY = {};
+try { KEY = JSON.parse(localStorage.getItem("mdq_key") || "{}"); } catch(e) {}
+const saveK = () => { try { localStorage.setItem("mdq_key", JSON.stringify(KEY)); } catch(e) {} };
+const A = i => KEY[Q[i].n] !== undefined ? KEY[Q[i].n] : Q[i].a;
+const $ = s => document.querySelector(s);
+const app = $("#app");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const T = (e, k) => e + ' <span class="km">' + k + '</span>';
+
+const shuf = a => {
+  a = a.slice();
+  for(let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
+const mkOrd = (i, r) => {
+  const o = [0, 1, 2, 3];
+  if(!r) return o;
+  const p = Q[i].p.findIndex(t => PIN.test(t));
+  return p < 0 ? shuf(o) : shuf(o.filter(x => x !== p)).concat(p);
+};
+
+let S = { rnd: 1, ins: 0 };
+
+function home() {
+  app.innerHTML = `
+    <div class="card">
+      <div class="kicker">Norton University · Faculty of Pharmacy</div>
+      <h1>ayvisalslkemnekeng10nek</h1>
+      <p class="km" style="font-size:1.05rem;margin:0 0 6px;">កម្រងសំណួរ MCQ ជីវគីមីមេតាបូលីក – រៀបចំដោយ Ay Visal</p>
+      <div class="subtext">${Q.length} Questions Total · Comprehensive Exam Preparation</div>
+
+      <div style="font-weight:700;font-size:0.85rem;text-transform:uppercase;color:#334155;margin-top:16px;">
+        Order & Randomization <span class="km">/ របៀបលំដាប់</span>
+      </div>
+      <div class="mode-grid">
+        <div id="m-rnd" class="mode-card active" onclick="setMode(1)">
+          <div class="mode-title">🔀 Full Random</div>
+          <div class="mode-desc">Shuffles both questions and options for real exam practice.<br><span class="km">ចៃដន្យទាំងស្រុង (សំណួរ + ជម្រើស)</span></div>
+        </div>
+        <div id="m-seq" class="mode-card" onclick="setMode(0)">
+          <div class="mode-title">🔢 Original Order</div>
+          <div class="mode-desc">Sequential order following the faculty syllabus.<br><span class="km">មិនចៃដន្យ (តាមលំដាប់ដើម ១ ដល់ ៣១៩)</span></div>
+        </div>
+      </div>
+
+      <div style="margin:16px 0;padding:14px;background:#f8fafc;border-radius:12px;border:1px solid var(--border);">
+        <div style="font-size:0.85rem;font-weight:700;text-transform:uppercase;color:#334155;margin-bottom:8px;">
+          Question Range <span class="km">/ ចន្លោះសំណួរ (១ - ${Q.length})</span>
+        </div>
+        <div class="btn-row" style="margin:0 0 10px;">
+          <label style="font-size:0.85rem;font-weight:600;">From: <input id="f" type="number" min="1" max="${Q.length}" value="1" style="width:70px;padding:6px;border-radius:6px;border:1px solid var(--border);"></label>
+          <label style="font-size:0.85rem;font-weight:600;">To: <input id="t" type="number" min="1" max="${Q.length}" value="${Q.length}" style="width:70px;padding:6px;border-radius:6px;border:1px solid var(--border);"></label>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:0.75rem;color:var(--muted);align-self:center;">Presets:</span>
+          <button class="preset-pill" onclick="setR(1,${Q.length})">All ${Q.length}</button>
+          <button class="preset-pill" onclick="setR(1,50)">1–50</button>
+          <button class="preset-pill" onclick="setR(51,100)">51–100</button>
+          <button class="preset-pill" onclick="setR(101,150)">101–150</button>
+          <button class="preset-pill" onclick="setR(151,200)">151–200</button>
+          <button class="preset-pill" onclick="setR(201,250)">201–250</button>
+          <button class="preset-pill" onclick="setR(251,${Q.length})">251–${Q.length}</button>
+        </div>
+      </div>
+
+      <label style="display:flex;align-items:center;gap:10px;margin:16px 0;font-size:0.9rem;cursor:pointer;">
+        <input type="checkbox" id="ins" style="width:18px;height:18px;accent-color:var(--primary);">
+        <div>
+          <strong>${T("Show answer instantly","បង្ហាញចម្លើយភ្លាមៗ")}</strong>
+          <div style="font-size:0.75rem;color:var(--muted);">Immediate green/red reveal with rationale during study.</div>
+        </div>
+      </label>
+
+      <div class="btn-row" style="margin-top:20px;">
+        <button class="btn pri" style="padding:12px 24px;font-size:0.95rem;" onclick="start()">▶ ${T("Start Quiz","ចាប់ផ្តើម")}</button>
+        <button class="btn" onclick="keyScr()">🔑 ${T("Answer Key Editor","កែចម្លើយត្រូវ")}</button>
+        <button class="btn" onclick="help()">ℹ️ ${T("User Guide","របៀបប្រើ")}</button>
+      </div>
+    </div>
+  `;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function setMode(r) {
+  S.rnd = r;
+  $("#m-rnd").className = "mode-card " + (r ? "active" : "");
+  $("#m-seq").className = "mode-card " + (!r ? "active" : "");
+}
+
+function setR(f, t) {
+  $("#f").value = f;
+  $("#t").value = t;
+}
+
+function start(idxList) {
+  let r = S.rnd;
+  if(!idxList) {
+    let f = +$("#f").value || 1;
+    let t = +$("#t").value || Q.length;
+    if(f > t) [f, t] = [t, f];
+    f = Math.max(1, f);
+    t = Math.min(Q.length, t);
+    idxList = [];
+    for(let i = f - 1; i < t; i++) idxList.push(i);
+    S.ins = $("#ins").checked;
+  }
+  if(r) idxList = shuf(idxList);
+  S.items = idxList.map(i => ({ i, o: mkOrd(i, r) }));
+  S.cur = 0;
+  S.res = {};
+  quiz();
+}
+
+function quiz(keepScroll) {
+  const k = S.cur;
+  const it = S.items[k];
+  const q = Q[it.i];
+  const r = S.res[k];
+  const lock = S.ins && r !== undefined;
+  const c = A(it.i);
+  const N = S.items.length;
+
+  app.innerHTML = `
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <span style="font-size:0.85rem;font-weight:700;color:var(--primary);">
+          ${T("Question","សំណួរ")} ${k + 1} / ${N}
+        </span>
+        <span style="font-size:0.75rem;font-family:monospace;background:#f1f5f9;padding:2px 8px;border-radius:6px;font-weight:600;">
+          Faculty #${q.o}
+        </span>
+      </div>
+
+      <h2>${esc(q.q)}</h2>
+
+      <div style="margin:16px 0;">
+        ${it.o.map((origIdx, p) => {
+          let cl = "opt-btn";
+          if(lock) {
+            if(origIdx === c) cl += " ok";
+            else if(origIdx === r) cl += " bad";
+          } else if(origIdx === r) {
+            cl += " sel";
+          }
+          return `
+            <button class="${cl}" onclick="pick(${origIdx})">
+              <span class="badge">${L[p]}</span>
+              <span style="padding-top:2px;">${esc(q.p[origIdx])}</span>
+            </button>
+          `;
+        }).join("")}
+      </div>
+
+      <div class="btn-row">
+        <button class="btn" ${k > 0 ? "" : "disabled"} onclick="S.cur--;quiz()">← ${T("Previous","មុន")}</button>
+        <button class="btn" ${k < N - 1 ? "" : "disabled"} onclick="S.cur++;quiz()">${T("Next","បន្ទាប់")} →</button>
+      </div>
+
+      <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:0.8rem;font-weight:700;color:#334155;">
+            ${T("Question Palette","ប្រអប់សំណួរ")}
+          </span>
+          <span style="font-size:0.75rem;color:var(--muted);">
+            ${Object.keys(S.res).length}/${N} Answered
+          </span>
+        </div>
+        <div class="grid-palette">
+          ${S.items.map((_, j) => `
+            <button class="pal-btn ${j === k ? "cur" : ""} ${S.res[j] !== undefined ? "done" : ""}" onclick="S.cur=${j};quiz()">
+              ${j + 1}
+            </button>
+          `).join("")}
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top:20px;">
+        <button class="btn pri" onclick="submit()">${T("Submit Quiz","បញ្ជូន")}</button>
+        <button class="btn" onclick="home()">${T("Quit","ចាកចេញ")}</button>
+      </div>
+    </div>
+  `;
+  if(!keepScroll) window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function pick(optIdx) {
+  if(S.ins && S.res[S.cur] !== undefined) return;
+  S.res[S.cur] = optIdx;
+  quiz(true);
+}
+
+function submit() {
+  let ok = 0, sk = 0;
+  S.items.forEach((it, k) => {
+    const r = S.res[k];
+    if(r === undefined) sk++;
+    else if(r === A(it.i)) ok++;
+  });
+  S.ok = ok;
+  S.sk = sk;
+  S.only = 0;
+  result();
+}
+
+function result() {
+  const n = S.items.length;
+  const p = Math.round((S.ok / n) * 100);
+
+  const rows = S.items.map((it, k) => {
+    const q = Q[it.i];
+    const r = S.res[k];
+    const c = A(it.i);
+    const g = r === c;
+    if(S.only && g) return "";
+
+    return `
+      <div class="review-item ${g ? "good" : "wrong"}">
+        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:4px;font-family:monospace;">
+          #${k + 1} · Faculty #${q.o}
+        </div>
+        <div style="font-weight:700;margin-bottom:6px;font-size:0.95rem;">${esc(q.q)}</div>
+        <div style="font-size:0.85rem;">
+          ${T("Your answer","ចម្លើយអ្នក")}: <strong>${r === undefined ? "—" : esc(q.p[r])}</strong>
+        </div>
+        ${g ? "" : `
+          <div style="font-size:0.85rem;color:var(--ok);margin-top:2px;">
+            ${T("Correct answer","ចម្លើយត្រឹមត្រូវ")}: <strong>${esc(q.p[c])}</strong>
+          </div>
+        `}
+      </div>
+    `;
+  }).join("");
+
+  app.innerHTML = `
+    <div class="card">
+      <div class="kicker">Examination Report</div>
+      <h1>${T("Score","ពិន្ទុ")}: ${S.ok} / ${n} (${p}%)</h1>
+      
+      <div class="stats-row">
+        <div class="stat-card ok">
+          <div class="stat-lbl">${T("Correct","ត្រូវ")}</div>
+          <div class="stat-val">${S.ok}</div>
+        </div>
+        <div class="stat-card bad">
+          <div class="stat-lbl">${T("Wrong","ខុស")}</div>
+          <div class="stat-val">${n - S.ok - S.sk}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-lbl">${T("Skipped","មិនឆ្លើយ")}</div>
+          <div class="stat-val">${S.sk}</div>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top:20px;">
+        <button class="btn pri" onclick="home()">${T("Home","ទំព័រដើម")}</button>
+        <button class="btn" onclick="retry()">${T("Retry Wrong Only","ធ្វើឡើងវិញតែខុស")}</button>
+        <button class="btn" onclick="S.only = !S.only; result()">${S.only ? T("Show All","បង្ហាញទាំងអស់") : T("Show Wrong Only","តែចម្លើយខុស")}</button>
+      </div>
+
+      <div style="margin-top:20px;">
+        ${rows}
+      </div>
+    </div>
+  `;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function retry() {
+  const w = S.items.filter((it, k) => S.res[k] !== A(it.i)).map(it => it.i);
+  if(w.length) start(w);
+}
+
+function keyScr() {
+  app.innerHTML = `
+    <div class="card">
+      <h1>${T("Answer Key Editor","កែចម្លើយត្រឹមត្រូវ")}</h1>
+      <p class="subtext">${T("Click any option to set the correct answer. Overrides save automatically in browser memory.","ចុចជម្រើសដើម្បីកំណត់ចម្លើយត្រឹមត្រូវ។")}</p>
+
+      <div class="btn-row">
+        <button class="btn pri" onclick="home()">← ${T("Back","ត្រឡប់ក្រោយ")}</button>
+        <button class="btn" onclick="expK()">${T("Export","នាំចេញ")}</button>
+        <button class="btn" onclick="impK()">${T("Import","នាំចូល")}</button>
+        <button class="btn" onclick="KEY={};saveK();fillKey()">${T("Reset","កំណត់ឡើងវិញ")}</button>
+      </div>
+
+      <textarea id="io" rows="2" style="width:100%;box-sizing:border-box;border-radius:8px;border:1px solid var(--border);font-family:monospace;padding:8px;" placeholder="CCAB… (${Q.length} letters A–D)"></textarea>
+      <p id="msg" style="font-size:0.8rem;color:var(--primary);margin:4px 0 12px;font-weight:600;"></p>
+      <input id="sq" type="text" placeholder="Search questions..." style="width:100%;box-sizing:border-box;border-radius:8px;border:1px solid var(--border);padding:8px 12px;" oninput="fillKey()">
+
+      <div id="kl" style="margin-top:16px;"></div>
+    </div>
+  `;
+  fillKey();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function fillKey() {
+  const s = ($("#sq").value || "").toLowerCase();
+  $("#kl").innerHTML = Q.map((x, i) => ({ x, i })).filter(({ x }) => !s || (x.n + " " + x.o + " " + x.q).toLowerCase().includes(s)).map(({ x, i }) => `
+    <div class="review-item" style="margin-bottom:8px;">
+      <div style="font-size:0.75rem;color:var(--muted);font-family:monospace;">${x.n} · Faculty #${x.o} ${KEY[x.n] !== undefined ? "✎ (Custom)" : ""}</div>
+      <div style="font-weight:700;margin:4px 0 8px;">${esc(x.q)}</div>
+      ${x.p.map((t, j) => `
+        <button class="opt-btn ${A(i) === j ? "ok" : ""}" onclick="setK(${i}, ${j})" style="margin:4px 0;padding:10px 14px;">
+          <span class="badge">${L[j]}</span>
+          <span>${esc(t)}</span>
+        </button>
+      `).join("")}
+    </div>
+  `).join("");
+}
+
+function setK(i, j) {
+  if(j === Q[i].a) delete KEY[Q[i].n];
+  else KEY[Q[i].n] = j;
+  saveK();
+  fillKey();
+}
+
+function expK() {
+  $("#io").value = Q.map((_, i) => L[A(i)]).join("");
+  $("#io").select();
+  $("#msg").textContent = "Key copied! Copy this text string.";
+}
+
+function impK() {
+  const s = $("#io").value.toUpperCase().replace(/[^A-D]/g, "");
+  if(s.length !== Q.length) {
+    $("#msg").textContent = `Need ${Q.length} letters, got ${s.length}`;
+    return;
+  }
+  KEY = {};
+  [...s].forEach((c, i) => {
+    const j = L.indexOf(c);
+    if(j !== Q[i].a) KEY[Q[i].n] = j;
+  });
+  saveK();
+  $("#msg").textContent = "Imported successfully ✓";
+  fillKey();
+}
+
+function help() {
+  app.innerHTML = `
+    <div class="card">
+      <h1>${T("How to Use ayvisalslkemnekeng10nek","របៀបប្រើ")}</h1>
+      <ol style="padding-left:20px;line-height:1.7;font-size:0.9rem;">
+        <li><strong>${T("Choose Mode","ជ្រើសរបៀប")}</strong>: Full Random shuffles questions & options; Original Order keeps syllabus sequence.</li>
+        <li><strong>${T("Question Range","កំណត់ចន្លោះសំណួរ")}</strong>: Select question numbers or use quick presets (e.g. 1–50, All ${Q.length}).</li>
+        <li><strong>${T("Instant Feedback","បង្ហាញចម្លើយភ្លាមៗ")}</strong>: Turn on to see right/wrong answers immediately as you practice.</li>
+        <li><strong>${T("Review & Retry","មើលចម្លើយ និងធ្វើឡើងវិញ")}</strong>: After submitting, click "Retry Wrong Only" to master difficult questions.</li>
+        <li><strong>${T("Answer Key","កែចម្លើយត្រូវ")}</strong>: Faculty and students can edit any question answer key with automatic browser saving.</li>
+      </ol>
+      <div class="btn-row">
+        <button class="btn pri" onclick="home()">← ${T("Back to Home","ត្រឡប់ក្រោយ")}</button>
+      </div>
+    </div>
+  `;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+home();
+</script>
+</body>
+</html>
